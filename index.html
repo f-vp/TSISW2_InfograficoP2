@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <!-- JSMaps -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <script src="jsmaps/jsmaps-libs.js" type="text/javascript"></script>
+  <script src="jsmaps/jsmaps.js" type="text/javascript"></script>
+  <script src="maps/brazil.js" type="text/javascript"></script>
+  <link href="jsmaps/jsmaps.css" rel="stylesheet" type="text/css" />
+  <!-- Style -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <title>Sites Web 2 - Prova 2</title>
+</head>
+
+<body>
+  <div class="container vertical-center">
+    <div class="row justify-content-around">
+      <div class="col-lg-6">
+        <!-- Wrapper do JSMaps -->
+        <div class="jsmaps-wrapper" id="brazil-map">
+          <svg id='pattern' xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+              <!-- Padrões -->
+              <pattern id='pat-sudeste' width="1" height="1" viewBox="0 0 300 100" preserveAspectRatio="none">
+                <image width="300" height="100"
+                  xlink:href='https://img.freepik.com/free-vector/seamless-pattern-industrial_70347-3191.jpg'
+                  preserveAspectRatio="none">
+                </image>
+              </pattern>
+              <pattern id='pat-norte' width="1" height="1" viewBox="40 15 100 100" overflow: visible>
+                <image width="190" height="190"
+                  xlink:href='https://as2.ftcdn.net/v2/jpg/03/12/20/51/1000_F_312205155_fEqn0rxbXSr1hPMMz76feN2slQGfMcns.jpg'>
+                </image>
+              </pattern>
+              <pattern id='pat-centro' width="1" height="1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <image width="100" height="100"
+                  xlink:href='https://previews.123rf.com/images/markovka/markovka1512/markovka151200696/49061516-vector-wald-design-floral-nahtlose-muster-blatt-hintergrund-pflanzen-ornament.jpg'
+                  preserveAspectRatio="none">
+                </image>
+              </pattern>
+              <pattern id='pat-sul' width="1" height="1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <image width="100" height="100"
+                  xlink:href='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsixSE_wYoLN0DMeKP2YzQFLVv9L-F55LFvQ&usqp=CAU'
+                  preserveAspectRatio="none">
+                </image>
+              </pattern>
+              <pattern id='pat-nordeste' width="1" height="1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <image width="100" height="100"
+                  xlink:href='https://img.freepik.com/free-vector/flying-eagle-mountains-cacti-desert-seamless-pattern-orange-yellow-color_126267-2199.jpg'
+                  preserveAspectRatio="none">
+                </image>
+              </pattern>
+              <!-- Fim Padrões -->
+            </defs>
+          </svg>
+        </div>
+        <!-- Fim Wrapper do JSMaps -->
+      </div>
+      <div class="col">
+        <!-- Resumo Brasil -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Regiões brasileiras e seus problemas ambientais</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Em resumo</h6>
+            <p class="card-text">Brasil, oficialmente República Federativa do Brasil, é um país localizado na América do
+              Sul,
+              faz fronteiras com todos os países do continente exceto Chile e Equador. É o maior país do
+              continente e ocupa 47% do território, considerado o 5º país em extensão territorial, dono
+              de uma das maiores biodiversidades do planeta e cuja economia é a oitava do mundo (2017).</p>
+            <p class="card-text">Sua bacia do rio Amazonas inclui uma vasta floresta tropical, lar de fauna
+              diversificada,
+              uma variedade de sistemas ecológicos e extensos recursos naturais que abrangem vários habitats protegidos.
+              Esse patrimônio ambiental único faz do Brasil um dos 17 países megadiversos e é objeto de significativo
+              interesse e debate global sobre desmatamento e proteção ambiental.</p>
+          </div>
+          <img src="https://exame.com/wp-content/uploads/2021/01/economia.brasil.jpg" class="card-img-top" alt="">
+        </div>
+        <!-- Fim Resumo Brasil -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modais -->
+  <div class="modal fade text-justify" id="NORTE" tabindex="-1" aria-labelledby="RegionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RegionModalLabel">Norte</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>A conversão de florestas para uso agropecuário está por trás dos altos níveis de emissão de gases de efeito
+            estufa registrados no Norte do Brasil.
+            Em aproximadamente 75% dos 450 municípios da região, a maior parte das emissões ocorreu devido a mudanças de
+            uso da terra, decorrentes principalmente do desmatamento.</p>
+          <p>O Norte é campeão na liberação de poluentes na atmosfera quando comparado ao resto do país, revela o
+            levantamento. Em 2018, estima-se que a região emitiu
+            ao menos 625,5 milhões de toneladas brutas de gás carbônico equivalente (CO2e), o equivalente a 31,5% do
+            total nacional. O cálculo leva em conta o CO2 e outros gases de efeito estufa, como o metano (CH4).</p>
+          <p>No sul do Pará, por exemplo, destaca-se São Félix do Xingu, município responsável pela emissão de 29,7
+            milhões de toneladas de CO2e em 2018. Desse total, a alteração no uso da terra responde por 25,4 milhões de
+            toneladas.</p>
+          <p>É o município que mais emitiu carbono no Brasil em 2018, segundo o IPAM cerca de 42% das emissões
+            provenientes de atividades agropecuárias têm origem no sistema digestivo do rebanho bovino. Durante a
+            chamada fermentação entérica, os animais liberam gás metano via eructação.</p>
+          <p>Cidades grandes e populosas da região Norte também são aquelas onde o tratamento de resíduos é uma fonte de
+            emissões importante – ainda que essa categoria responda por apenas 4% das emissões brutas do Brasil.
+            Manaus, por exemplo, está entre os dez municípios brasileiros que mais emitem poluentes pela disposição
+            final de resíduos sólidos em aterros sanitários, controlados ou lixões.</p>
+          </p>
+          <br>
+          <h4>Fonte</h4>
+          <a href="https://energiaeambiente.org.br/municipios-da-regiao-norte-sao-os-maiores-emissores-do-brasil-20210416"
+            target="_blank">Energia e Ambiente</a>
+          <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-justify" id="NORDESTE" tabindex="-1" aria-labelledby="RegionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RegionModalLabel">Nordeste</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>O Nordeste vem sofrendo sérios problemas de ordem ambiental. Um deles é a
+            desertificação, um processo de empobrecimento dos recursos ambientais provocado por
+            processos naturais e principalmente humanos.</p>
+
+          <p>A Desertificação constitui um conjunto
+            de processos que promovem o desequilíbrio dos meios físico, químico, biológico e
+            socioeconômico, via de regra, desencadeados pela ação antrópica, que atua de forma
+            conjunta com as limitações climáticas impostas a ambientes ecologicamente frágeis.</p>
+
+          <p>O fenômeno tem avançado em praticamente todas as áreas do semi-árido brasileiro.
+            Isso tem feito com que áreas produtivas tornem-se
+            verdadeiros “desertos”, gerando problemas no campo da agricultura, pecuária, economia
+            e limitando cada vez mais o desenvolvimento. A condição de semi-aridez não é fator
+            determinante ao desenvolvimento de uma região. Porém, o que se tem visto na prática
+            são ações de combate a um fenômeno natural que é a seca.</p>
+
+          <p>O processo de desertificação em áreas mais sensíveis reflete as condições de uso
+            insustentável dos solos, da vegetação, dos recursos hídricos e da biodiversidade. As
+            atividades humanas e suas consequências sobre o uso do solo e da água são causa de
+            grande pressão sobre esses recursos.</p>
+        </div>
+        <div class="modal-footer row justify-content-between">
+          <div class="col-auto">
+            <h4>Fonte</h4>
+            <a href="https://www.redalyc.org/pdf/4815/481549227012.pdf" target="_blank">DESERTIFICAÇÃO NO NORDESTE</a>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-justify" id="CENTRO-OESTE" tabindex="-1" aria-labelledby="RegionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RegionModalLabel">Centro-Oeste</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Inserida nos biomas Pantanal, Cerrado e Amazônia, a Região
+            Centro-Oeste merece especial atenção em face da necessidade de preservação ambiental de tais biomas e do
+            constante estímulo ao desenvolvimento econômico, lastreado em sua principal
+            atividade, qual seja, a agropecuária.</p>
+          <p>Estudo realizado em 1999, pela Fundação Estadual do Meio Ambiente (Fema/MT),
+            atualmente Secretaria de Estado do Meio Ambiente (Sema/MT),
+            estimou que as áreas protegidas por reserva legal e as áreas de
+            preservação permanente (APP) correspondiam, considerando
+            apenas os biomas Cerrado e Amazônia no estado de Mato Grosso,
+            a 13,14 milhões de hectares, dos quais 4,22 milhões no Cerrado
+            e 8,92 milhões no Bioma Amazônia, que, somados, equivaliam a
+            14,5% do território do estado.</p>
+          <p>De acordo com dados disponibilizados pelo Ministério do
+            Meio Ambiente, 86,77% da cobertura vegetal do Bioma Pantanal
+            é nativa, embora venha sendo impactada pela ação humana, em
+            especial, pela atividade agropecuária.</p>
+          <p>Em todas as áreas da Região Centro-Oeste, é possível observar
+            intensas modificações no ambiente natural, provocadas pela
+            prática de sua principal atividade econômica. A introdução da
+            produção em grande escala e de monoculturas exóticas de uso
+            comercial, bem como a forte presença da pecuária na região,
+            resultou na eliminação de vegetação nativa, provocando sérios
+            desequilíbrios, como aumento da emissão de gases de efeito estufa,
+            redução da biodiversidade, contaminação do ambiente natural por
+            agroquímicos, compactação, erosão e perda de fertilidade dos solos,
+            diminuição da qualidade e quantidade de água.</p>
+          <p>O aumento da eficiência na produção pecuária pode auxiliar
+            na redução de seus impactos ambientais. Ações como adequa
+            do confinamento e melhora no alimento oferecido aos animais,
+            adoção de manejo adequado do pasto e suplementação a pasto
+            podem ajudar na conservação dos biomas. </p>
+          <p>Existem, na região, dois tipos básicos de produção agrícola:
+            pequenas propriedades com lavouras tradicionais (ex.: mandioca
+            e feijão), extrativismo e pecuária leiteira; e grandes
+            propriedades com monocultura de grãos e pecuária extensiva
+            ou intensiva. Mais recentemente, vem crescendo também a criação
+            de aves e suínos integrados à agroindústria.</p>
+          <p>Importante aspecto do impacto ambiental negativo das atividades
+            aqui discutidas é a degradação dos recursos hídricos. O
+            uso intensivo do solo, aliado a um manejo inadequado, potencializa
+            um processo natural de erosão e assoreamento dos cursos
+            de água. Associado ao problema da erosão, está o uso de agrotóxicos
+            de maneira inadvertida.</p>
+          <p>A perspectiva do esgotamento dos recursos naturais leva, muitas
+            vezes, a transformações técnicas no modo de produção e,
+            consequentemente, maiores investimentos necessitam ser realizados.
+          </p>
+        </div>
+        <div class="modal-footer row justify-content-between">
+          <div class="col-auto">
+            <h4>Fonte</h4>
+            <a href="https://web.bndes.gov.br/bib/jspui/bitstream/1408/13054/1/Regi%C3%A3o%20Centro-Oeste%20desafios%20e%20perspectivas_8_.pdf"
+              target="_blank">
+              Região Centro-Oeste: desafios e perspectivas para o desenvolvimento sustentável</a>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-justify" id="SUDESTE" tabindex="-1" aria-labelledby="RegionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RegionModalLabel">Sudeste</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>A Região Sudeste, a mais populosa e a maior geradora de riquezas
+            do país, desde o século XVIII, é o principal centro de atividade
+            econômica do Brasil. Inicialmente, com a intensa atividade
+            mineradora, seguida da produção cafeeira e do processo de industrialização,
+            que, a partir da década de 1930, trouxe desenvolvimento à região.</p>
+          <p>A vegetação da Região Sudeste é composta apenas pelo Bioma
+            Mata Atlântica, presente em 17 estados brasileiros e que abarca
+            mais de 70% da população nacional sob seus domínios.</p>
+          <p>A Mata Atlântica, por ocupar uma vasta extensão territorial,
+            da Região Nordeste à Região Sul do Brasil, com características de
+            altitude, solo e relevo bastante diferentes, é composta por uma
+            rica diversidade de florestas, tendo registrado os dois maiores
+            recordes mundiais nesse quesito. Ademais, caracteriza-se por
+            grande riqueza hídrica, abrigando sete das nove maiores bacias
+            hidrográficas do país.</p>
+          <p>Historicamente, tal bioma sofreu intensa devastação e, atualmente,
+            muito pouco resta de sua vegetação nativa. Análises apontam que
+            apenas cerca de 8,5% de sua área está bem conservada
+            em fragmentos acima de cem hectares. Entre o sul do estado do
+            Rio de Janeiro e o norte do estado do Paraná, na Serra do Mar,
+            encontram-se os três maiores remanescentes de Mata Atlântica.</p>
+          <p>Os motivos que levaram à devastação foram os agentes de interesse
+            econômico tal como a agricultura com a produção monocultora comercial de café,
+            cana-de-açúcar entre outras, indústrias que surgiram após a Segunda Guerra Mundial
+            no Brasil, mineração que serviu para o crescimento da região e do país e abastecimento
+            das indústrias de matéria-prima e a ocupação urbana que se apoderou de extensas
+            áreas e que muitas vezes não levaram em conta os fatores ambientais no início de
+            sua formação, todos esses causaram sérios problemas de ordem ambiental ao longo de
+            décadas, e dessa forma deixou uma herança de destruição e perdas naturais, muitas delas
+            irreversíveis.</p>
+          <p>A região sudeste é densamente povoada, abriga as sete maiores metrópoles brasileiras,
+            são elas: São Paulo com uma população estimada de 17,8 milhões, Rio de Janeiro com
+            10,8 milhões, Belo Horizonte 4,8 milhões, Campinas 2,3 milhões, Vitória e Baixada
+            Santista ambas com 1,4 milhões e em Minas, o Vale do Aço com 560 mil.</p>
+          <p>A imensa concentração de pessoas provocam poluição no solo, água e ar. A poluição do
+            solo ocorre principalmente nos lixões, que além de poluir o solo atinge também o lençol
+            freático, a água é poluída através de esgotos sem tratamento, resíduos de produtos químicos
+            descartados pela indústria e o ar que sofre alterações provenientes da emissão de gases de
+            veículos com combustíveis fósseis (carros, ônibus e caminhões) e emitidos também por
+            atividades industriais. Os diversos tipos de poluição podem provocar doenças como a
+            hepatite, leptospirose e doenças respiratórias, comuns nos períodos de baixa umidade,
+            dentre outras.
+          </p>
+        </div>
+        <div class="modal-footer row justify-content-between">
+          <div class="col-auto">
+            <h4>Fontes</h4>
+            <a href="https://web.bndes.gov.br/bib/jspui/bitstream/1408/13074/3/Regi%C3%A3o%20Sudeste%20-%20recuperando%20para%20desenvolver_7_P_BD.pdf"
+              target="_blank">
+              Região Sudeste: recuperando para desenvolver</a><br>
+            <a href="https://brasilescola.uol.com.br/brasil/regiao-sudeste-paisagens-intensamente-transformadas.htm"
+              target="_blank">
+              Região Sudeste: Paisagens intensamente Transformadas</a>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade text-justify" id="SUL" tabindex="-1" aria-labelledby="RegionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="RegionModalLabel">Sul</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Na região sul do Brasil, mais precisamente no estado do Rio Grande do Sul em sua porção sudoeste, existe
+            um problema ambiental que vem se agravando ao longo do tempo:
+            a arenização. Trata-se da formação de bancos de areia em solos predispostos para essa ocorrência,
+            o que ocasiona o esgotamento das áreas agricultáveis e a consequente perda da vegetação e de nutrientes.
+          </p>
+          <p>A arenização na região Sul ocorre pela soma de alguns fatores: a predisposição dos solos, que são
+            naturalmente arenosos; o uso intensivo deles na agricultura;
+            a remoção da vegetação e a retirada de nutrientes. Com o desmatamento das áreas para a agricultura, os
+            solos ficam mais expostos à ação das chuvas,
+            que auxiliam na sedimentação e movimentação dos sedimentos, que, por sua vez, dão origem aos areais que
+            recobrem os solos e tornam a paisagem, em muitos casos,
+            semelhante a áreas de deserto.
+          </p>
+          <p>Outro problema ambiental dessa região é causado pela uso de agrotóxicos, podendo contaminar o solo e a
+            água.
+            Um estudo feito a pedido do Ministério Público de Santa Catarina (MPSC) em 2018 encontrou resíduos de
+            agrotóxicos em amostras de água do
+            abastecimento público de 22 municípios do estado. Foram achadas até substâncias banidas na União Europeia.
+            No total,
+            foram achadas nas amostras sete substâncias banidas na União Europeia (UE). Em 13 dos 22 municípios, foram
+            encontrados resíduos de mais de um agrotóxico.
+          </p>
+        </div>
+        <div class="modal-footer row justify-content-between">
+          <div class="col-auto">
+            <h4>Fonte</h4>
+            <a href="https://brasilescola.uol.com.br/brasil/desertificacao-no-sul" target="_blank">
+              Arenização na região Sul</a>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fim Modais -->
+
+  <!-- Inicialização do mapa -->
+  <script type="text/javascript">
+    $(function () {
+      $('#brazil-map').JSMaps({
+        map: 'brazil'
+      });
+    });
+  </script>
+  <!-- Fim Inicialização do mapa -->
+</body>
+</html>
