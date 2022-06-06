@@ -10,7 +10,6 @@
     "maps": {}
   }
 
-
   /////////////////////////////
   //Polyfills
   /////////////////////////////
@@ -195,6 +194,7 @@
               path.color = group.color;
               path.hoverColor = group.hoverColor;
               path.selectedColor = group.selectedColor;
+              //adiciona uma class aos grupos de estados para servir de referencia para os patterns
               path.class = group.class;
             }
           });
@@ -203,13 +203,13 @@
       return paths;
     }
 
-    function resetScrollBar() {
-      // if (config.stateClickAction === 'text') {
-      //   var t = textArea[0];
-      //   t.scrollLeft = 0;
-      //   t.scrollTop = 0;
-      // }
-    }
+    //function resetScrollBar() {
+    // if (config.stateClickAction === 'text') {
+    //   var t = textArea[0];
+    //   t.scrollLeft = 0;
+    //   t.scrollTop = 0;
+    // }
+    //}
 
     /////////////////////////////
     //Render map
@@ -323,6 +323,7 @@
             });
           } else {
             pathProperties = $.extend(pathProperties, {
+              //pega a class fornecida no brazil.js e adiciona no path svg das regioes
               'class': paths[i].class,
               'fill': paths[i].color,
               'stroke': config.strokeColor,
@@ -378,7 +379,7 @@
           statesHitAreas.push(hitArea);
 
 
-          /*function hitAreaOverOut(e) {
+          function hitAreaOverOut(e) {
             
             var id = this.data('id');
             var isGroup = !!this.data('group');
@@ -387,7 +388,7 @@
             var isMouseover = e.type === 'mouseover';
             var color = isMouseover ? target.hoverColor : target.color;
             var callback = isMouseover ? settings.onStateOver : settings.onStateOut;
-
+            console.log(target)
             if (enabled) {
 
               // Animate paths
@@ -395,9 +396,24 @@
                 var pathIds = isGroup ? this.data('group').groupIds : [id];
                 animatePaths(pathsAr, pathIds, color);
               }
+              //traduz as class de cada estado para a id das regioes,
+              //pra ser informado para a funcao de passar o mouse
+              if(target.class == "reg-centro"){
+                var regiao = "CENTRO-OESTE"
+              } else if(target.class == "reg-sul"){
+                var regiao = "SUL"
+              } else if(target.class == "reg-sudeste"){
+                var regiao = "SUDESTE"
+              } else if(target.class == "reg-norte"){
+                var regiao = "NORTE"
+              } else if(target.class == "reg-nordeste"){
+                var regiao = "NORDESTE"
+              } else {
+                var regiao = undefined
+              }
               
-              // Tooltip
-              isMouseover ? showTooltip(target.name) : removeTooltip();
+              // Tooltip e cards
+              isMouseover ? passandoMouse(target.name, regiao) : naoPassandoMouse(target.name, regiao);
 
               // Trigger callback
               if ($.isFunction(callback)) {
@@ -406,7 +422,7 @@
             }
           }
           hitArea.mouseover(hitAreaOverOut);
-          hitArea.mouseout(hitAreaOverOut);*/
+          hitArea.mouseout(hitAreaOverOut);
 
 
           hitArea.click(function (e) {
@@ -423,7 +439,7 @@
             if (enabled) {
 
               //Reset scrollbar
-              resetScrollBar();
+              //resetScrollBar();
 
               //Animate previous state out
               if (current && current != target) {
@@ -538,7 +554,9 @@
             }
 
             // Tooltip
-            isMouseover ? showTooltip(target.name) : removeTooltip();
+            //substituindo a funcao de tooltip para tambem mostrar a regiao
+            //como um card do bootstrap 5
+            isMouseover ? passandoMouse(target.name) : naoPassandoMouse(target.name);
 
             // Trigger callback
             if ($.isFunction(callback)) {
@@ -641,20 +659,29 @@
       }
 
       /////////////////////////////
-      //Tooltip
+      //Tooltip (e card)
       /////////////////////////////
-      function showTooltip(text) {
+      //funcao alterada para acomodar o card da lateral direita
+      function passandoMouse(texto, regiao) {
         if (isTouchDevice && isMobile || config.disableTooltip) {
           return;
         }
-        removeTooltip();
+        naoPassandoMouse(texto, regiao);
         map.after($('<div />').addClass('jsmaps-tooltip'));
-        $('.jsmaps-tooltip').html(text);
+        $('.jsmaps-tooltip').html(texto);
 
         // Check tootip fits at the top
         calculateTooltipOffset();
-
+        //mostra o card da regiao na qual esta passando o mouse
         $('.jsmaps-tooltip').fadeIn();
+        if (regiao != undefined){
+          $("#card-body-"+regiao).css({ display: "block" });
+        }else{
+          $("#card-body-"+texto).css({ display: "block" });
+        }
+        //esconde o resumo e sua imagem
+        $("#card-body-resumo").css({ display: "none" });
+        $("#resumo-img").css({ display: "none" });
       }
 
       function calculateTooltipOffset() {
@@ -668,8 +695,17 @@
         });
       }
 
-      function removeTooltip() {
+      function naoPassandoMouse(texto, regiao) {
         map.next('.jsmaps-tooltip').remove();
+        //esconde o card da regiao na qual esta passando o mouse
+        if (regiao != undefined){
+          $("#card-body-"+regiao).css({ display: "none" });
+        }else{
+          $("#card-body-"+texto).css({ display: "none" });
+        }
+        //mostra o resumo e sua imagem
+        $("#card-body-resumo").css({ display: "block" });
+        $("#resumo-img").css({ display: "block" });
       }
 
       /////////////////////////////
